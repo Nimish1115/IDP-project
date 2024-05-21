@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Professional Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; justify-content: space-between; }
+        .header-left { width: 30%; background: #ffebcc; padding: 20px; }
+        .header-left p { margin: 0; }
+        .header-right { width: 65%; padding: 20px; }
+        h1, h2 { color: #333; }
+        p { margin: 5px 0; }
+        .section { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <p>{{ name }}</p>
+            <p>{{ email }}</p>
+            <p>{{ phone }}</p>
+            <p>{{ location }}</p>
+        </div>
+        <div class="header-right">
+            <h2>Professional Summary</h2>
+            <p>{{ summary }}</p>
+        </div>
+    </div>
+    <div class="section">
+        <h2>Skills</h2>
+        <p>{{ skills }}</p>
+    </div>
+    <div class="section">
+        <h2>Education</h2>
+        <p>{{ education }}</p>
+    </div>
+    <div class="section">
+        <h2>Work History</h2>
+        <p>{{ work_history }}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Students</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/static/images/ss3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        form label, form select, form button {
+            margin: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        th, td {
+            border: 1px solid #000000;
+            background-color: #ffffff;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                flex-direction: column;
+            }
+
+            form label, form select, form button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Registered Students</h1>
+    <a href="/enroll" class="button">Back to Registration Form</a>
+    
+    <form action="/students" method="get">
+        <label for="course">Filter by Course:</label>
+        <select name="course" id="course">
+            <option value="">All</option>
+            <option value="IT">IT</option>
+            <option value="cybersecurity">Cybersecurity</option>
+            <option value="software engineer">Software Engineer</option>
+            <option value="cloud computing">Cloud Computing</option>
+            <option value="networking">Networking</option>
+        </select>
+        
+        <label for="interest">by Interest:</label>
+        <select name="interest" id="interest">
+            <option value="">All</option>
+            <option value="project1">Project1</option>
+            <option value="project2">Project2</option>
+            <option value="project3">Project3</option>
+            <option value="project4">Project4</option>
+            <option value="project5">Project5</option>
+        </select>
+        
+        <button type="submit">Apply Filters</button>
+    </form>
+
+    {% if teams %}
+        {% for interest, team_groups in teams.items() %}
+            <h2>Teams enrolled in {{ interest }}</h2><br>
+            {% for group in team_groups %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Interest</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in group %}
+                        <tr>
+                            <td>{{ student[0] }}</td>
+                            <td>{{ student[1] }}</td>
+                            <td>{{ student[2] }}</td>
+                            <td>{{ student[3] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table><br><br>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>No students registered.</p>
+    {% endif %}
+</body>
+</html>

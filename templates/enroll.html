@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="/static/display.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Student Registration Form</h1>
+        <!-- Flash message display area -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form action="/submit" method="POST">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="">Select a course</option>
+                <option value="IT">IT</option>
+                <option value="cybersecurity">Cybersecurity</option>
+                <option value="software engineer">Software Engineer</option>
+                <option value="cloud computing">Cloud Computing</option>
+                <option value="networking">Networking</option>
+            </select>
+            
+            <label for="interest">Interest:</label>
+            <select id="interest" name="interest" required>
+                <option value="">Select an interest</option>
+                <option value="project1">Project1</option>
+                <option value="project2">Project2</option>
+                <option value="project3">Project3</option>
+                <option value="project4">Project4</option>
+                <option value="project5">Project5</option>
+            </select><br>
+            
+            <button type="submit" class="button">Submit</button>
+            <a href="/dashboard" class="button">Back to Dashboard</a><br>
+        </form>
+
+        <a href="/students">View Registered Students</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+        }
+        .project {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/enroll">Enroll</a>
+        <a href="/resume-builder">Resume Builder</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Project Details</h1>
+        {% for project in projects %}
+        <div class="project">
+            <h2>{{ project[1] }}</h2> <!-- project_name is at index 1 -->
+            <p><strong>Description:</strong> {{ project[2] }}</p> <!-- description is at index 2 -->
+            <p><strong>Owners:</strong> {{ project[3] }}</p> <!-- owners is at index 3 -->
+            <p><strong>Project Coordinator:</strong> {{ project[4] }}</p> <!-- project_coordinator is at index 4 -->
+            <p><strong>Project Outcomes:</strong> {{ project[5] }}</p> <!-- project_outcomes is at index 5 -->
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+

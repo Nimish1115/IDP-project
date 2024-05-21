@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Templates</title>
+</head>
+<body>
+    <h1>Select a Resume Template</h1>
+    <ul>
+        {% for template in templates %}
+            <li><a href="{{ url_for('show_resume_template', template_name=template.filename) }}">{{ template.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
